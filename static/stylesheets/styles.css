@@ -1,0 +1,434 @@
+*{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+html{
+    background-image: -webkit-linear-gradient(left,
+        rgba(0,0,0,0.5) 0%,
+        rgba(0,0,0,0) 10%,
+        rgba(0,0,0,0) 90%,
+        rgba(0,0,0,0.5) 100%
+      ),
+      -webkit-linear-gradient(top,
+        rgba(0,0,0,0.9) 0%,
+        rgba(0,0,0,0) 10%,
+        rgba(0,0,0,0) 90%,
+        rgba(0,0,0,0.9) 100%
+      ),
+      url(img/background1.jpg);
+    background-attachment: fixed;
+    height: 100%;
+}
+body{
+    font-family: Helvetica;
+}
+.page{
+    display: flex;
+}
+.hidden{
+    display: none !important;
+}
+.logo{
+    background-image: url(img/logo.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    margin-bottom: 10px;
+    width: 100%;
+    height: 100px;
+}
+.logo:hover {
+    background-image: url(img/logo.png);
+    cursor: pointer;
+}
+.about {
+    width: 50%;
+    max-width: 50%;
+    margin: auto;
+    margin-top: 50px;
+}
+.about .logo {
+    background-image: url(img/logo.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    margin-bottom: 30px;
+    height: 100px;
+}
+.about .logo-p3 {
+    background-image: url(img/logo-p3.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    margin-bottom: 10px;
+    height: 100px;
+}
+.logo-mini {
+    display: flex;
+    justify-content: center;
+}
+.about .logo-ivoox {
+    background-image: url(img/ivoox.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    margin: 15px;
+    height: 40px;
+    width: 40px;
+}
+.about .logo-yt {
+    background-image: url(img/youtube.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    margin: 15px;
+    height: 40px;
+    width: 40px;
+}
+.about .logo-ivoox:hover {
+    cursor: pointer;
+}
+.about .logo-yt:hover {
+    cursor: pointer;
+}
+.about .logo-krb {
+    background-image: url(img/logo-krb.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    margin-bottom: 30px;
+    height: 100px;
+}
+.about .logo-p3:hover {
+    cursor: pointer;
+}
+.about .logo-krb:hover {
+    cursor: pointer;
+}
+.about p{
+    text-align: justify;
+    color: #bbbbbb;
+}
+.about a{
+    text-decoration: none;
+    color: #eeeeee;
+}
+.about a{
+    cursor: pointer;
+}
+h1{
+    text-align: center;
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: #bbbbbb;
+}
+h2{
+    text-align: center;
+    font-size: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 30px;
+    color: #bbbbbb;
+}
+h3{
+    text-align: center;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #bbbbbb;
+    margin-top: 20px;
+}
+h4{
+    text-align: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #bbbbbb;
+    margin-top: 15px;
+}
+.flashes li{
+    text-align: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #bbbbbb;
+}
+
+.link-h2:hover{
+    cursor: pointer;
+    color: #fff;
+}
+
+/* NavBar Styles */
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(20, 20, 20, .7);
+  overflow-x: hidden;
+  padding-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.nav-down {
+    margin-bottom: 40px;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #999999;
+  display: block;
+  border: none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #fafafa;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: rgba(148, 26, 1, .8);
+  color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: rgba(80, 80, 80, .2);
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+/* Form Styles */
+
+.content {
+    margin-left: 200px;
+    width: 100%;
+}
+.login a{
+    margin: auto;
+    margin-top: 20px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+}
+.login-form{
+    margin: auto;
+    margin-top: 30px;
+    width: 50%;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.login-form input{
+    width: 100%;
+    max-width: 100%;
+    color: #fff;
+    background: rgba(0,0,0,0);
+}
+.login-form button{
+    margin: auto;
+    margin-top: 20px;
+    width: 30%;
+    max-width: 30%;
+}
+
+/* Table Styles */
+
+.table-wrapper{
+    margin: auto;
+    width: 50%;
+    max-width: 50%;
+}
+
+.fl-table {
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: 0px 5px 10px 8px rgba(0, 0, 0, 0.7);
+}
+
+.fl-table td, .fl-table th {
+    text-align: center;
+    padding: 8px;
+}
+
+.fl-table td {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.fl-table tbody tr:hover {
+    cursor: pointer;
+    background: rgba(50, 50, 50, .8);
+    color: #fff;
+}
+
+.fl-table thead th {
+    color: #bbbbbb;
+    background: rgba(0, 0, 0, .8);
+}
+
+.fl-table tr:nth-child(even) {
+    color: #bbbbbb;
+    background: rgba(30, 30, 30, .8);
+}
+.fl-table tr:nth-child(odd) {
+    color: #bbbbbb;
+    background: rgba(20, 20, 20, .8);
+}
+
+/* Responsive */
+
+@media only screen and (max-width: 920px) {
+    .logo {
+        height: 75px;
+    }
+    .sidenav {
+        width: 150px;
+    }
+    .sidenav a, .dropdown-btn {
+      padding: 4px 6px 4px 10px;
+      font-size: 15px;
+    }
+    .content {
+        margin-left: 150px;
+    }
+    h1{
+        font-size: 20px;
+        margin-top: 30px;
+    }
+    h2{
+        font-size: 18px;
+        margin-top: 30px;
+    }
+    h3{
+        font-size: 12px;
+        margin-top: 15px;
+    }
+    h4{
+        font-size: 10px;
+        margin-top: 12px;
+    }
+    .flashes li{
+        font-size: 8px;
+        margin-top: 5px;
+    }
+
+    .login a{
+        margin-top: 10px;
+    }
+
+    .login-form{
+        margin-top: 15px;
+        width: 70%;
+        max-width: 70%;
+    }
+    .about {
+        width: 90%;
+        max-width: 90%;
+    }
+    .table-wrapper{
+        width: 90%;
+        max-width: 90%;
+    }
+
+    .fl-table {
+        font-size: 10px;
+    }
+
+    .fl-table td, .fl-table th {
+        padding: 5px;
+    }
+
+    .fl-table td {
+        font-size: 8px;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .logo {
+        height: 50px;
+    }
+    .sidenav {
+        width: 100px;
+    }
+    .sidenav a, .dropdown-btn {
+      padding: 2px 4px 2px 8px;
+      font-size: 12px;
+    }
+    .content {
+        margin-left: 100px;
+    }
+}
+@media only screen and (max-width: 250px) {
+    .logo {
+        height: 40px;
+    }
+    .sidenav {
+        width: 80px;
+    }
+    .sidenav a, .dropdown-btn {
+      padding: 1px 2px 1px 4px;
+      font-size: 8px;
+    }
+    .content {
+        margin-left: 80px;
+    }
+    h1{
+        font-size: 15px;
+        margin-top: 15px;
+    }
+    h2{
+        font-size: 12px;
+        margin-top: 5px;
+    }
+    h3{
+        font-size: 10px;
+        margin-top: 3px;
+    }
+    h4{
+        font-size: 8px;
+        margin-top: 2px;
+    }
+    .table-wrapper{
+        width: 99%;
+        max-width: 99%;
+    }
+}
