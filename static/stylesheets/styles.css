@@ -16,7 +16,7 @@ html{
         rgba(0,0,0,0) 90%,
         rgba(0,0,0,0.9) 100%
       ),
-      url(img/background1.jpg);
+      url(img/background.jpg);
     background-attachment: fixed;
     height: 100%;
 }
