@@ -16,7 +16,19 @@ class User(db.Model, UserMixin):
 class Package(db.Model):
     __tablename__ = 'package'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
+    title = db.Column(db.String(50))
     shortName = db.Column(db.String(50))
     description = db.Column(db.String(1000))
     price = db.Column(db.Float)
+    promotion = db.Column(db.Boolean, default=False)
+    dueDate = db.Column(db.String(50))
+
+
+class Blog(db.Model):
+    __tablename__ = 'blog'
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(50))
+    shortName = db.Column(db.String(50))
+    description = db.Column(db.String(1000))
+    url = db.Column(db.String(200))
+    date = db.Column(db.String(50))

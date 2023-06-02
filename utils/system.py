@@ -2,6 +2,8 @@ import json
 import secrets
 import os
 
+from flask_mail import Mail
+
 from database import db, User, Package
 from bpAuth import loginManager, jwt
 
@@ -28,12 +30,22 @@ def createApp(app):
     app.config["WEB_NAME"] = config['web-name']
     app.config["PACKAGES"] = config['packages']
 
+    app.config["MAIL_SERVER"] = config['mail-server']
+    app.config["MAIL_PORT"] = config['mail-port']
+    app.config["MAIL_USE_TLS"] = config['mail-use-tls']
+    app.config["MAIL_USE_SSL"] = config['mail-use-ssl']
+    app.config["MAIL_USERNAME"] = config['mail-username']
+    app.config["MAIL_PASSWORD"] = config['mail-password']
+
     loginManager.init_app(app)
     app.config["loginManager"] = loginManager
     jwt.init_app(app)
     app.config["jwt"] = jwt
     db.init_app(app)
     app.config["database"] = db
+    mail = Mail()
+    mail.init_app(app)
+    app.config["mail"] = mail
 
     return app
 

@@ -22,6 +22,17 @@
                         <a href="/package/{{ pkg.shortName }}">{{ pkg.name }}</a>
                     {% endfor %}
                 </div>
+                <a href="/blog">Blog</a>
+            </div>
+            <div class="nav-down">
+                {% if user %}
+                    <a href="#">{{ user.name }}</a>
+                    {% if user.permissions >= 12 %}
+                        <a href="/blog/add">Add Blog Entry</a>
+                        <a href="/package/add">Add Package</a>
+                    {% endif %}
+                    <a href="/logout">Logout</a>
+                {% endif %}
             </div>
         </div>
         {% with messages = get_flashed_messages() %}

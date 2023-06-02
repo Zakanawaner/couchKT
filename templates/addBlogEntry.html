@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="login">
+        <h2>Add Blog Entry</h2>
+        <form class="login-form" action="/blog/add" method="post">
+            <input placeholder="Title" type="text" name="title" id="title">
+            <textarea placeholder="Description" cols="40" rows="10" name="description" id="description"></textarea>
+            <input placeholder="URL" type="text" name="url" id="url">
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+{% endblock %}

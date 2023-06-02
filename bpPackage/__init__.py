@@ -8,7 +8,7 @@ packageBP = Blueprint('packageBluePrint', __name__)
 
 
 @packageBP.route("/package/<pk>", methods={"GET", "POST"})
-def generalEndPoint(pk):
+def packageEndPoint(pk):
     pkg = getPackage(pk)
     return render_template(
         'package.html',

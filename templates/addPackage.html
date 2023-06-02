@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="login">
+        <h2>Add package</h2>
+        <form class="login-form" action="/package/add" method="post">
+            <input placeholder="Title" type="text" name="title" id="title">
+            <textarea placeholder="Description" cols="40" rows="10" name="description" id="description"></textarea>
+            <input placeholder="Price" type="number" name="price" id="price">
+            <input type="checkbox" name="isPromotion" id="isPromotion"/>
+            <input type="date" name="date" id="date">
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+{% endblock %}

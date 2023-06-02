@@ -20,11 +20,6 @@ if __name__ == '__main__':
     app.run(host=app.config['HOST'], port=app.config['PORT'])
 
 # TODO
-#  - Hacer página 404
-#  - No dar informacion de la bd en html -> Eliminar caracteres especiales
-#  - Cambiar cinco mejores puntuaciones y diez mejores en equipos con tres máximo por persona
-#  - Borrar torneo
-
-# TODO
-#  - Añadir counting en bd para clubs y facciones
-#  - Pensarlo bien para que quede bonico y pesioso
+#  - Definir como se contacta a través del formulario
+#  - Blog de entradas a los diferentes contenidos
+#  - Añadir y eliminar manualmente ofertas
