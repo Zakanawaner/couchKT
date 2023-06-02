@@ -75,7 +75,7 @@ def createAdmin(app):
         return
     new_user = User(
         name=app.config["ADMIN_USERNAME"],
-        password=generate_password_hash(app.config["ADMIN_PASSWORD"], method='scrypt'),
+        password=generate_password_hash(app.config["ADMIN_PASSWORD"], method='sha256'),
         permissions=15
     )
     app.config['database'].session.add(new_user)
@@ -87,7 +87,7 @@ def createCollaborator(app):
         return
     new_user = User(
         name=app.config["COLLABORATOR_USERNAME"],
-        password=generate_password_hash(app.config["COLLABORATOR_PASSWORD"], method='scrypt'),
+        password=generate_password_hash(app.config["COLLABORATOR_PASSWORD"], method='sha256'),
         permissions=13
     )
     app.config['database'].session.add(new_user)
