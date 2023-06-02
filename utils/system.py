@@ -2,8 +2,6 @@ import json
 import secrets
 import os
 
-from werkzeug.security import generate_password_hash
-
 from database import db, User, Package
 from bpAuth import loginManager, jwt
 
@@ -75,7 +73,7 @@ def createAdmin(app):
         return
     new_user = User(
         name=app.config["ADMIN_USERNAME"],
-        password=generate_password_hash(app.config["ADMIN_PASSWORD"], method='sha256'),
+        password=app.config["ADMIN_PASSWORD"],
         permissions=15
     )
     app.config['database'].session.add(new_user)
@@ -87,7 +85,7 @@ def createCollaborator(app):
         return
     new_user = User(
         name=app.config["COLLABORATOR_USERNAME"],
-        password=generate_password_hash(app.config["COLLABORATOR_PASSWORD"], method='sha256'),
+        password=app.config["COLLABORATOR_PASSWORD"],
         permissions=13
     )
     app.config['database'].session.add(new_user)
