@@ -256,6 +256,13 @@ h4{
     color: #fff;
     background: rgba(0,0,0,0);
 }
+.login-form textarea{
+    margin-top: 20px;
+    width: 100%;
+    max-width: 100%;
+    color: #fff;
+    background: rgba(0,0,0,0);
+}
 .login-form button{
     margin: auto;
     margin-top: 20px;
