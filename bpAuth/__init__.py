@@ -1,9 +1,8 @@
-from datetime import timedelta
 from flask import Blueprint, make_response, redirect, url_for, request, flash, render_template, current_app
 from flask_jwt_extended import create_access_token, JWTManager, set_access_cookies, unset_jwt_cookies
 from flask_login import LoginManager, login_user, login_required, logout_user
 
-from utils.user import userLogin, userSignup, getUserOnly
+from utils.user import userLogin, getUserOnly
 
 
 authBP = Blueprint('authBluePrint', __name__)
@@ -31,7 +30,7 @@ def loginEndPoint():
         if status == 200:
             flash("Login successful")
             response = redirect(url_for('genericBluePrint.generalEndPoint'))
-            set_access_cookies(response, create_access_token(identity=user.bcpId))
+            set_access_cookies(response, create_access_token(identity=user.name))
             response.set_cookie("preferred_update", "1")
             response.set_cookie("preferred_gameType", "1")
             response.set_cookie("preferred_language", "en")

@@ -11,7 +11,7 @@ def addBlog(form, database):
         shortName=form["title"].lower().replace(" ", "") if "title" in form.keys() else "title",
         description=form["description"] if "description" in form.keys() else "Description",
         url=form["url"] if "url" in form.keys() else "",
-        date=datetime.date.today().strftime("%Y/%m/%d"),
+        date=datetime.datetime.today(),
     )
     database.session.add(blog)
     database.session.commit()

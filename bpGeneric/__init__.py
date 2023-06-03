@@ -1,8 +1,3 @@
-import smtplib
-
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-
 from flask import Blueprint, render_template, current_app, request, flash
 from flask_login import current_user
 from flask_mail import Message

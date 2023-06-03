@@ -1,6 +1,7 @@
 import json
 import secrets
 import os
+import datetime
 
 from flask_mail import Mail
 
@@ -111,7 +112,9 @@ def createPackages(app):
                 title=pkg["name"],
                 shortName=pkg['name'].lower().replace(" ", ""),
                 description=pkg['description'],
-                price=float(pkg['price'])
+                price=float(pkg['price']),
+                promotion=False,
+                dueDate=datetime.datetime.now()
             )
             app.config['database'].session.add(new_pkg)
     app.config['database'].session.commit()

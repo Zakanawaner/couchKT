@@ -1,3 +1,5 @@
+import datetime
+
 from database import Package
 
 
@@ -8,9 +10,9 @@ def addPackage(form, database):
         title=form["title"] if "title" in form.keys() else "Title",
         shortName=form["title"].lower().replace(" ", "") if "title" in form.keys() else "title",
         description=form["description"] if "description" in form.keys() else "Description",
-        price=form["price"] if "price" in form.keys() else "price",
-        promotion=form["isPromotion"],
-        date=form["date"],
+        price=float(form["price"]) if "price" in form.keys() else 0.0,
+        promotion=True if 'isPromotion' in form.keys() else False,
+        dueDate=datetime.datetime.strptime(form["date"], '%Y-%m-%d'),
     )
     database.session.add(new_pkg)
     database.session.commit()
@@ -27,4 +29,8 @@ def getPackage(shortName):
 
 
 def getAllPackages():
-    return Package.query.all()
+    pks = Package.query.all()
+    for pk in pks:
+        if pk.promotion and pk.dueDate <= datetime.datetime.now():
+            pks.remove(pk)
+    return pks

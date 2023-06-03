@@ -20,7 +20,7 @@ def getAllBlogsEndPoint():
 
 
 @blogBP.route("/blog/<bl>", methods={"GET", "POST"})
-def getAllBlogsEndPoint(bl):
+def getBlogEndPoint(bl):
     blg = getBlog(bl)
     return render_template(
         'blog.html',
