@@ -76,7 +76,7 @@ def addPackageEndPoint():
 @adminBP.route("/package/delete", methods={"GET", "POST"})
 @login_required
 @only_admin
-def deleteBlogEntryEndPoint():
+def deletePackageEndPoint():
     if request.method == "POST":
         r = request
         deletePackage(request.form, current_app.config['database'])

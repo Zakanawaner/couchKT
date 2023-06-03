@@ -106,9 +106,9 @@ def createCollaborator(app):
 
 def createPackages(app):
     for pkg in app.config["PACKAGES"]:
-        if not Package.query.filter_by(name=pkg["name"]).first():
+        if not Package.query.filter_by(title=pkg["name"]).first():
             new_pkg = Package(
-                name=pkg["name"],
+                title=pkg["name"],
                 shortName=pkg['name'].lower().replace(" ", ""),
                 description=pkg['description'],
                 price=float(pkg['price'])
