@@ -18,7 +18,7 @@ def addBlog(form, database):
 
 
 def deleteBlog(form, database):
-    database.session.delete(Blog.query.filter_by(title=form['title']).first())
+    database.session.delete(Blog.query.filter_by(shortName=form['entry']).first())
     database.session.commit()
     return 200
 

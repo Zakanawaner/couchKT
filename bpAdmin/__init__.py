@@ -35,9 +35,8 @@ def changePlayerPermissionsEndPoint(us):
 @only_admin
 def addBlogEntryEndPoint():
     if request.method == "POST":
-        r = request
-        addBlog(request.form, current_app.config['database'])
-        return redirect(url_for('blogBluePrint.blogEndPoint'))
+        entry = addBlog(request.form, current_app.config['database'])
+        return redirect(url_for('blogBluePrint.getBlogEndPoint', bl=entry.shortName))
     return render_template(
         'addBlogEntry.html',
         packages=getAllPackages(),
@@ -49,9 +48,8 @@ def addBlogEntryEndPoint():
 @only_admin
 def deleteBlogEntryEndPoint():
     if request.method == "POST":
-        r = request
         deleteBlog(request.form, current_app.config['database'])
-        return redirect(url_for('blogBluePrint.blogEndPoint'))
+        return redirect(url_for('blogBluePrint.getAllBlogsEndPoint'))
     return render_template(
         'deleteBlogEntry.html',
         packages=getAllPackages(),
@@ -64,7 +62,6 @@ def deleteBlogEntryEndPoint():
 @only_admin
 def addPackageEndPoint():
     if request.method == "POST":
-        r = request
         addPackage(request.form, current_app.config['database'])
         return redirect(url_for('genericBluePrint.generalEndPoint'))
     return render_template(
@@ -78,11 +75,10 @@ def addPackageEndPoint():
 @only_admin
 def deletePackageEndPoint():
     if request.method == "POST":
-        r = request
         deletePackage(request.form, current_app.config['database'])
-        return redirect(url_for('blogBluePrint.blogEndPoint'))
+        return redirect(url_for('genericBluePrint.generalEndPoint'))
     return render_template(
-        'deleteBlogEntry.html',
+        'deletePackageEntry.html',
         packages=getAllPackages(),
         user=current_user if not current_user.is_anonymous else None)
 

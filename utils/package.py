@@ -19,7 +19,7 @@ def addPackage(form, database):
 
 
 def deletePackage(form, database):
-    database.session.delete(Package.query.filter_by(title=form['title']).first())
+    database.session.delete(Package.query.filter_by(shortName=form['package']).first())
     database.session.commit()
     return 200
 

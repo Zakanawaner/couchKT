@@ -29,7 +29,9 @@
                     <a href="#">{{ user.name }}</a>
                     {% if user.permissions >= 12 %}
                         <a href="/blog/add">Add Blog Entry</a>
+                        <a href="/blog/delete">Delete Blog Entry</a>
                         <a href="/package/add">Add Package</a>
+                        <a href="/package/delete">Delete Package</a>
                     {% endif %}
                     <a href="/logout">Logout</a>
                 {% endif %}

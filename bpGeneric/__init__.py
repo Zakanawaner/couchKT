@@ -35,12 +35,13 @@ def contactEndPoint():
         email_subject = "Kill Team Academy - New message - " + request.form['name'] if 'name' in request.form.keys() else "Anonymous"
         email_message = request.form['message'] if 'message' in request.form.keys() else "Empty"
         email_client = request.form['email'] if 'email' in request.form.keys() else "No Email"
+        email_package = request.form['packages'] if 'packages' in request.form.keys() else "No Package"
         msg = Message(
             email_subject,
             sender=current_app.config["MAIL_USERNAME"],
             recipients=[current_app.config["MAIL_USERNAME"]]
         )
-        msg.body = email_client + '\n\n' + email_message
+        msg.body = email_client + '\n\n' + 'Package selected: ' + email_package + '\n\n' + email_message
         current_app.config['mail'].send(msg)
         flash('Email Sent!')
     return render_template(

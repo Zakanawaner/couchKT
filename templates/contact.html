@@ -5,6 +5,11 @@
         <form class="login-form" action="/contact" method="post">
             <input placeholder="Name" type="text" name="name" id="name">
             <input placeholder="Email" type="email" name="email" id="email">
+            <select name="packages" id="packages">
+                {% for pkg in packages %}
+                    <option value="{{ pkg.title }} - {{ pkg.price }}">{{ pkg.title }} - {{ pkg.price }}$</option>
+                {% endfor %}
+            </select>
             <textarea placeholder="Message" cols="40" rows="10" name="message" id="message"></textarea>
             <button type="submit">Send</button>
         </form>
