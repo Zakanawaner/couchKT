@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="card-container">
+        {% for pkg in packages %}
+            {% if pkg.promotion %}
+                <div onclick="location.href='/package/{{ pkg.shortName }}';" class="card promotion">
+                    <div>
+                        <p><strong>{{ pkg.title }}</strong></p>
+                        <p>{{ pkg.dueDate }}</p>
+                        <p>{{ pkg.description }}</p>
+                    </div>
+                    <p class="card-footer">{{ pkg.price }}$</p>
+                </div>
+            {% endif %}
+        {% endfor %}
+        {% for pkg in packages %}
+            {% if not pkg.promotion %}
+                <div onclick="location.href='/package/{{ pkg.shortName }}';" class="card">
+                    <div>
+                        <p><strong>{{ pkg.title }}</strong></p>
+                        <p>{{ pkg.description }}</p>
+                    </div>
+                    <p class="card-footer">{{ pkg.price }}$</p>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

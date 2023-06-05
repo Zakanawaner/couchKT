@@ -22,7 +22,7 @@ if __name__ == '__main__':
     app.run(host=app.config['HOST'], port=app.config['PORT'])
 
 # TODO
-#  - Definir como se contacta a través del formulario y añadir el package deseado
+#  - On click en package llevar a contacto con el package seleccionado
 #  - Blog de entradas a los diferentes contenidos
 #  - eliminar manualmente ofertas
 #  - Crear Blogs.html

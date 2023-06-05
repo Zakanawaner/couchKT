@@ -8,48 +8,30 @@
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/styles.css') }}">
 </head>
 <body>
-    <div class="page">
-        <div class="sidenav">
-            <div class="nav-up">
-                <div onclick="location.href='/';" class="logo"></div>
-                <a href="/contact">Contact</a>
-                <a href="/about">About</a>
-                <button class="dropdown-btn">Packages
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-container">
-                    {% for pkg in packages %}
-                        <a href="/package/{{ pkg.shortName }}">{{ pkg.title }}</a>
-                    {% endfor %}
-                </div>
-                <a href="/blog">Blog</a>
-            </div>
-            <div class="nav-down">
-                {% if user %}
-                    <a href="#">{{ user.name }}</a>
-                    {% if user.permissions >= 12 %}
-                        <a href="/blog/add">Add Blog Entry</a>
-                        <a href="/blog/delete">Delete Blog Entry</a>
-                        <a href="/package/add">Add Package</a>
-                        <a href="/package/delete">Delete Package</a>
-                    {% endif %}
-                    <a href="/logout">Logout</a>
-                {% endif %}
-            </div>
-        </div>
+    <div class="navbar">
+        <ul class="menu-bar">
+            <li onclick="location.href='/contact';">Contact</li>
+            <li onclick="location.href='/about';">About</li>
+            <li onclick="location.href='/packages';">Packages</li>
+            <li onclick="location.href='/blog';">Blog</li>
+        </ul>
+    </div>
+
+    <div class="div-flashes">
         {% with messages = get_flashed_messages() %}
-          {% if messages %}
-            <ul class=flashes>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-            </ul>
-          {% endif %}
+            {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
         {% endwith %}
-        <div class="content">
+    </div>
+
+    <div class="content">
         {% block content %}
         {% endblock %}
-    </div>
     </div>
 
     <script>

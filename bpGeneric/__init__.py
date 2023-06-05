@@ -14,7 +14,6 @@ def generalEndPoint():
     return render_template(
         'general.html',
         title=current_app.config['WEB_NAME'] + " - " + "General",
-        packages=getAllPackages(),
         user=current_user if not current_user.is_anonymous else None
     )
 
@@ -24,7 +23,6 @@ def aboutEndPoint():
     return render_template(
         'about.html',
         title=current_app.config['WEB_NAME'] + " - " + "About",
-        packages=getAllPackages(),
         user=current_user if not current_user.is_anonymous else None
     )
 

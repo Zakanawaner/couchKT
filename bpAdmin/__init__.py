@@ -4,7 +4,7 @@ from flask import Blueprint, redirect, url_for, current_app, request, flash, ren
 from flask_login import login_required, current_user
 
 from utils.user import setPlayerPermission, getUserOnly
-from utils.package import getAllPackages, addPackage, deletePackage
+from utils.package import addPackage, deletePackage
 from utils.blog import addBlog, getAllBlogs, deleteBlog
 from utils.decorators import only_admin
 
@@ -26,7 +26,6 @@ def changePlayerPermissionsEndPoint(us):
     return render_template(
         'permissions.html',
         usr=usr,
-        packages=getAllPackages(),
         permissions=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14])
 
 
@@ -39,7 +38,6 @@ def addBlogEntryEndPoint():
         return redirect(url_for('blogBluePrint.getBlogEndPoint', bl=entry.shortName))
     return render_template(
         'addBlogEntry.html',
-        packages=getAllPackages(),
         user=current_user if not current_user.is_anonymous else None)
 
 
@@ -52,7 +50,6 @@ def deleteBlogEntryEndPoint():
         return redirect(url_for('blogBluePrint.getAllBlogsEndPoint'))
     return render_template(
         'deleteBlogEntry.html',
-        packages=getAllPackages(),
         blogs=getAllBlogs(),
         user=current_user if not current_user.is_anonymous else None)
 
@@ -66,7 +63,6 @@ def addPackageEndPoint():
         return redirect(url_for('genericBluePrint.generalEndPoint'))
     return render_template(
         'addPackage.html',
-        packages=getAllPackages(),
         user=current_user if not current_user.is_anonymous else None)
 
 
@@ -79,7 +75,6 @@ def deletePackageEndPoint():
         return redirect(url_for('genericBluePrint.generalEndPoint'))
     return render_template(
         'deletePackageEntry.html',
-        packages=getAllPackages(),
         user=current_user if not current_user.is_anonymous else None)
 
 
