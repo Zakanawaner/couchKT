@@ -15,7 +15,7 @@
         {% endfor %}
         {% for pkg in packages %}
             {% if not pkg.promotion %}
-                <div onclick="location.href='/package/{{ pkg.shortName }}';" class="card">
+                <div onclick="location.href='{{url_for('genericBluePrint.contactEndPoint', pkg=pkg.shortName)}}';" class="card">
                     <div>
                         <p><strong>{{ pkg.title }}</strong></p>
                         <p>{{ pkg.description }}</p>

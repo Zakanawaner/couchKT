@@ -3,7 +3,7 @@ from flask_login import current_user
 from flask_mail import Message
 
 
-from utils.package import getAllPackages
+from utils.package import getAllPackages, getPackage
 
 
 genericBP = Blueprint('genericBluePrint', __name__)
@@ -27,8 +27,9 @@ def aboutEndPoint():
     )
 
 
-@genericBP.route("/contact", methods={"GET", "POST"})
-def contactEndPoint():
+@genericBP.route("/contact", defaults={'pkg': None}, methods={"GET", "POST"})
+@genericBP.route("/contact/<pkg>", methods={"GET", "POST"})
+def contactEndPoint(pkg):
     if request.method == 'POST':
         email_subject = "Kill Team Academy - New message - " + request.form['name'] if 'name' in request.form.keys() else "Anonymous"
         email_message = request.form['message'] if 'message' in request.form.keys() else "Empty"
@@ -46,5 +47,6 @@ def contactEndPoint():
         'contact.html',
         title=current_app.config['WEB_NAME'] + " - " + "Contact",
         packages=getAllPackages(),
+        pkgSelected=getPackage(pkg),
         user=current_user if not current_user.is_anonymous else None
     )
