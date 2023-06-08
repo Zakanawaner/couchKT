@@ -3,13 +3,16 @@
     <div class="card-container">
         {% for pkg in packages %}
             {% if pkg.promotion %}
-                <div onclick="location.href='/package/{{ pkg.shortName }}';" class="card promotion">
+                <div onclick="location.href='/package/{{ pkg.shortName }}';" class="card">
                     <div>
                         <p><strong>{{ pkg.title }}</strong></p>
-                        <p>{{ pkg.dueDate }}</p>
+                        <p>{{ pkg.dueDate.strftime('%Y-%m-%d') }}</p>
                         <p>{{ pkg.description }}</p>
                     </div>
                     <p class="card-footer">{{ pkg.price }}$</p>
+                    {% if user.permissions >= 13 %}
+                        <a href="package/{{ pkg.shortName }}/delete">Delete</a>
+                    {% endif %}
                 </div>
             {% endif %}
         {% endfor %}
@@ -21,6 +24,9 @@
                         <p>{{ pkg.description }}</p>
                     </div>
                     <p class="card-footer">{{ pkg.price }}$</p>
+                    {% if user.permissions >= 13 %}
+                        <a href="package/{{ pkg.shortName }}/delete">Delete</a>
+                    {% endif %}
                 </div>
             {% endif %}
         {% endfor %}

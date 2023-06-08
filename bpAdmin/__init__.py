@@ -4,7 +4,7 @@ from flask import Blueprint, redirect, url_for, current_app, request, flash, ren
 from flask_login import login_required, current_user
 
 from utils.user import setPlayerPermission, getUserOnly
-from utils.package import addPackage, deletePackage
+from utils.package import addPackage, deletePackage, getAllPackages
 from utils.blog import addBlog, getAllBlogs, deleteBlog
 from utils.decorators import only_admin
 
@@ -66,16 +66,16 @@ def addPackageEndPoint():
         user=current_user if not current_user.is_anonymous else None)
 
 
-@adminBP.route("/package/delete", methods={"GET", "POST"})
+@adminBP.route("/package/<pk>/delete", methods={"GET", "POST"})
 @login_required
 @only_admin
-def deletePackageEndPoint():
-    if request.method == "POST":
-        deletePackage(request.form, current_app.config['database'])
-        return redirect(url_for('genericBluePrint.generalEndPoint'))
+def deletePackageEndPoint(pk):
+    pkgs = getAllPackages()
     return render_template(
-        'deletePackageEntry.html',
-        user=current_user if not current_user.is_anonymous else None)
+        'packages.html',
+        title=current_app.config['WEB_NAME'] + " - " + pkg.title,
+        user=current_user if not current_user.is_anonymous else None
+    )
 
 
 @adminBP.route('/update_server', methods=['POST'])

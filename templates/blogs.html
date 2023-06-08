@@ -1,8 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
-    {% for entry in blogs %}
-        <h2>{{ entry.title }}</h2>
-        <h3>{{ entry.description }}</h3>
-        <h3>{{ entry.url }}</h3>
-    {% endfor %}
+    <div class="card-container">
+        {% for blg in blogs %}
+            <div onclick="location.href='/blog/{{ blg.shortName }}';" class="card promotion">
+                <div>
+                    <p><strong>{{ blg.title }}</strong></p>
+                    <p>{{ blg.date.strftime('%Y-%m-%d') }}</p>
+                    <p>{{ blg.description }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

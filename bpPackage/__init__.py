@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, current_app
 from flask_login import current_user
 
-from utils.package import getPackage, getAllPackages
+from utils.package import getPackage, getAllPackages, deletePackage
 
 
 packageBP = Blueprint('packageBluePrint', __name__)
