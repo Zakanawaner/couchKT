@@ -7,11 +7,18 @@
             {% endif %}
         {% endif %}
         {% for blg in blogs %}
-            <div onclick="location.href='/blog/{{ blg.shortName }}';" class="card promotion">
+            <div onclick="location.href='/blog/{{ blg.shortName }}';" class="blog">
                 <div>
                     <p><strong>{{ blg.title }}</strong></p>
                     <p>{{ blg.date.strftime('%Y-%m-%d') }}</p>
                     <p>{{ blg.description }}</p>
+                </div>
+                <div class="card-footer">
+                    {% if user is not none %}
+                        {% if user.permissions >= 13 %}
+                            <a href="blog/{{ blg.shortName }}/delete">Delete</a>
+                        {% endif %}
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}

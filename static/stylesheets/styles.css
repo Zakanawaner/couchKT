@@ -282,6 +282,34 @@ label {
 
 .with-label {
     display: flex;
+}
 
+.blog {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  min-width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, 1);
+  padding: 35px;
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 123, 0, .5);
+}
+
+.blog:hover {
+   cursor: pointer;
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+
+  text-shadow:
+    0 0 7px rgb(255, 230, 0),
+    0 0 10px rgb(255, 170, 0),
+    0 0 21px rgb(255, 120, 0),
+    0 0 42px rgb(255, 100, 0),
+    0 0 82px rgb(255, 80, 0);
 }
 
