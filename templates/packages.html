@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="card-container">
+        {% if user is not none %}
+            {% if user.permissions >= 13 %}
+                <a onclick="location.href='/package/add';" class="add">Add</a>
+            {% endif %}
+        {% endif %}
         {% for pkg in packages %}
             {% if pkg.promotion %}
                 <div onclick="location.href='/package/{{ pkg.shortName }}';" class="card">
@@ -9,10 +14,14 @@
                         <p>{{ pkg.dueDate.strftime('%Y-%m-%d') }}</p>
                         <p>{{ pkg.description }}</p>
                     </div>
-                    <p class="card-footer">{{ pkg.price }}$</p>
-                    {% if user.permissions >= 13 %}
-                        <a href="package/{{ pkg.shortName }}/delete">Delete</a>
-                    {% endif %}
+                    <div class="card-footer">
+                        <p>{{ pkg.price }}$</p>
+                        {% if user is not none %}
+                            {% if user.permissions >= 13 %}
+                                <a href="package/{{ pkg.shortName }}/delete">Delete</a>
+                            {% endif %}
+                        {% endif %}
+                    </div>
                 </div>
             {% endif %}
         {% endfor %}
@@ -23,10 +32,14 @@
                         <p><strong>{{ pkg.title }}</strong></p>
                         <p>{{ pkg.description }}</p>
                     </div>
-                    <p class="card-footer">{{ pkg.price }}$</p>
-                    {% if user.permissions >= 13 %}
-                        <a href="package/{{ pkg.shortName }}/delete">Delete</a>
-                    {% endif %}
+                    <div class="card-footer">
+                        <p class="card-footer">{{ pkg.price }}$</p>
+                        {% if user is not none %}
+                            {% if user.permissions >= 13 %}
+                                <a href="package/{{ pkg.shortName }}/delete">Delete</a>
+                            {% endif %}
+                        {% endif %}
+                    </div>
                 </div>
             {% endif %}
         {% endfor %}

@@ -22,7 +22,7 @@ def getBlogEndPoint(bl):
     blg = getBlog(bl)
     return render_template(
         'blog.html',
-        title=current_app.config['WEB_NAME'] + " - " + blg.Title,
+        title=current_app.config['WEB_NAME'] + " - " + blg.title,
         blog=blg,
         user=current_user if not current_user.is_anonymous else None
     )

@@ -21,7 +21,7 @@ class Package(db.Model):
     description = db.Column(db.String(1000))
     price = db.Column(db.Float)
     promotion = db.Column(db.Boolean, default=False)
-    dueDate = db.Column(db.DateTime)
+    dueDate = db.Column(db.DateTime, nullable=True)
 
 
 class Blog(db.Model):

@@ -14,8 +14,14 @@ body {
     flex-direction: column;
 }
 
-p, a {
+p, a, h2, h3, h4, button, input, textarea, label {
     font-family: sans-serif;
+    color: rgba(255, 255, 255, 1);
+}
+
+label {
+    margin: auto;
+    font-size: 0.8em;
 }
 
 /* MENU BAR */
@@ -180,6 +186,102 @@ p, a {
 }
 
 .card-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-footer p{
   font-size: 0.8em;
   color: rgba(180, 180, 180, 1);
 }
+
+.card-footer a{
+  font-size: 0.8em;
+  color: rgba(180, 180, 180, 1);
+  text-decoration: none;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.card-footer a:hover{
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+.add {
+  font-size: 0.8em;
+  color: rgba(180, 180, 180, 1);
+  margin: auto;
+}
+
+.add:hover{
+  cursor: pointer;
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+  color: rgba(255, 255, 255, 1);
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: rgba(255, 255, 255, 1);
+}
+
+.form h2{
+  margin: auto;
+  margin-bottom: 50px;
+}
+
+.form .login {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.login input, textarea, checkbox {
+  color: #fff;
+  background: rgba(0,0,0,0);
+  backdrop-filter: blur(10px);
+}
+
+.sub-login {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.form button {
+	border-radius: 25px;
+    background: rgba(204, 100, 0, .4);
+    backdrop-filter: blur(10px);
+    margin: auto;
+    margin-top: 20px;
+    width: fit-content;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 1);
+    &:hover {
+        &::before {
+            background: rgba(204, 100, 0, .4);
+            box-shadow: 0px 3px 20px 0px black;
+        }
+        text-shadow:
+        0 0 7px rgb(255, 230, 0),
+        0 0 10px rgb(255, 170, 0),
+        0 0 21px rgb(255, 120, 0),
+        0 0 42px rgb(255, 100, 0),
+        0 0 82px rgb(255, 80, 0);
+    }
+}
+
+.with-label {
+    display: flex;
+
+}
+

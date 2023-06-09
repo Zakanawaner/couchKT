@@ -12,14 +12,14 @@ def addPackage(form, database):
         description=form["description"] if "description" in form.keys() else "Description",
         price=float(form["price"]) if "price" in form.keys() else 0.0,
         promotion=True if 'isPromotion' in form.keys() else False,
-        dueDate=datetime.datetime.strptime(form["date"], '%Y-%m-%d'),
+        dueDate=datetime.datetime.strptime(form["date"], '%Y-%m-%d') if form['date'] else None,
     )
     database.session.add(new_pkg)
     database.session.commit()
 
 
-def deletePackage(form, database):
-    database.session.delete(Package.query.filter_by(shortName=form['package']).first())
+def deletePackage(pkg, database):
+    database.session.delete(Package.query.filter_by(shortName=pkg).first())
     database.session.commit()
     return 200
 

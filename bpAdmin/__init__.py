@@ -4,8 +4,8 @@ from flask import Blueprint, redirect, url_for, current_app, request, flash, ren
 from flask_login import login_required, current_user
 
 from utils.user import setPlayerPermission, getUserOnly
-from utils.package import addPackage, deletePackage, getAllPackages
-from utils.blog import addBlog, getAllBlogs, deleteBlog
+from utils.package import addPackage, deletePackage
+from utils.blog import addBlog, deleteBlog
 from utils.decorators import only_admin
 
 
@@ -41,17 +41,12 @@ def addBlogEntryEndPoint():
         user=current_user if not current_user.is_anonymous else None)
 
 
-@adminBP.route("/blog/delete", methods={"GET", "POST"})
+@adminBP.route("/blog/<bl>/delete", methods={"GET", "POST"})
 @login_required
 @only_admin
-def deleteBlogEntryEndPoint():
-    if request.method == "POST":
-        deleteBlog(request.form, current_app.config['database'])
-        return redirect(url_for('blogBluePrint.getAllBlogsEndPoint'))
-    return render_template(
-        'deleteBlogEntry.html',
-        blogs=getAllBlogs(),
-        user=current_user if not current_user.is_anonymous else None)
+def deleteBlogEndPoint(bl):
+    deleteBlog(bl, current_app.config['database'])
+    return redirect(url_for('blogBluePrint.getAllBlogsEndPoint'))
 
 
 @adminBP.route("/package/add", methods={"GET", "POST"})
@@ -70,12 +65,8 @@ def addPackageEndPoint():
 @login_required
 @only_admin
 def deletePackageEndPoint(pk):
-    pkgs = getAllPackages()
-    return render_template(
-        'packages.html',
-        title=current_app.config['WEB_NAME'] + " - " + pkg.title,
-        user=current_user if not current_user.is_anonymous else None
-    )
+    deletePackage(pk, current_app.config['database'])
+    return redirect(url_for('packageBluePrint.getAllPackagesEndPoint'))
 
 
 @adminBP.route('/update_server', methods=['POST'])

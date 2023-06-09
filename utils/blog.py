@@ -15,15 +15,19 @@ def addBlog(form, database):
     )
     database.session.add(blog)
     database.session.commit()
+    return blog
 
 
-def deleteBlog(form, database):
-    database.session.delete(Blog.query.filter_by(shortName=form['entry']).first())
+def deleteBlog(bl, database):
+    database.session.delete(Blog.query.filter_by(shortName=bl).first())
     database.session.commit()
     return 200
 
 
 def getBlog(shortName):
+    blg = Blog.query.filter_by(shortName=shortName).first()
+    if "youtube" in blg.url:
+        blg.url = blg.url.replace("watch?v=", "embed/")
     return Blog.query.filter_by(shortName=shortName).first()
 
 
