@@ -10,8 +10,8 @@
             {% if pkg.promotion %}
                 <div onclick="location.href='/package/{{ pkg.shortName }}';" class="card">
                     <div>
-                        <p><strong>{{ pkg.title }}</strong></p>
-                        <p>{{ pkg.dueDate.strftime('%Y-%m-%d') }}</p>
+                        <p><strong>Promotion - {{ pkg.title }}</strong></p>
+                        <p>Until {{ pkg.dueDate.strftime('%Y-%m-%d') }}</p>
                         <p>{{ pkg.description }}</p>
                     </div>
                     <div class="card-footer">

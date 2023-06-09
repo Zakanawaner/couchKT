@@ -12,7 +12,7 @@ def addPackage(form, database):
         description=form["description"] if "description" in form.keys() else "Description",
         price=float(form["price"]) if "price" in form.keys() else 0.0,
         promotion=True if 'isPromotion' in form.keys() else False,
-        dueDate=datetime.datetime.strptime(form["date"], '%Y-%m-%d') if form['date'] else None,
+        dueDate=datetime.datetime.strptime(form["date"], '%Y-%m-%d') if form['date'] else datetime.datetime.now() + datetime.timedelta(days=7),
     )
     database.session.add(new_pkg)
     database.session.commit()
