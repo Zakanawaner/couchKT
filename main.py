@@ -20,8 +20,3 @@ createDatabase(app)
 
 if __name__ == '__main__':
     app.run(host=app.config['HOST'], port=app.config['PORT'])
-
-# TODO
-#  - Blog de entradas a los diferentes contenidos
-#  - eliminar manualmente ofertas y entradas de blog
-#  - Crear Blogs.html
